@@ -5,6 +5,8 @@ import id.walt.siwe.configuration.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.sessions.*
+import java.util.*
 
 fun main(args: Array<String>): Unit =
     io.ktor.server.cio.EngineMain.main(args)
@@ -17,13 +19,13 @@ fun Application.module() {
 
 fun Application.routes() {
     routing {
-        get("/") {
-            call.respondText("Hello World!")
+        get("/nonce") {
+            val newNonce = UUID.randomUUID().toString()
+            call.sessions.set(WaltSiweSession(nonce = newNonce))
+            call.respondText(newNonce)
         }
-        post("/double-receive") {
-            val first = call.receiveText()
-            val theSame = call.receiveText()
-            call.respondText(first + " " + theSame)
+        post("/verify") {
+            val request = call.receive<WaltSiweRequest>()
         }
     }
 }
