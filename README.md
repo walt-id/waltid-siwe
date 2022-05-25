@@ -1,6 +1,9 @@
 # walt-siwe
 
-### Parser and serializer for Eip4361 messages
+### Parser and serializer for EIP-4361 messages
+use `id.walt.siwe.Eip4361Message`
+
+#### Parse EIP-4361 message
 ```kotlin
 val msg = Eip4361Message.fromString(
     """
@@ -19,4 +22,24 @@ val msg = Eip4361Message.fromString(
     - https://example.com/my-web2-claim.json
     """.trimIndent()
 )
+```
+
+#### Serialize EIP-4361 message
+```kotlin
+val msg = Eip4361Message(
+    host = host,
+    address = address,
+    description = description,
+    uri = uri!!,
+    nonce = nonce!!,
+    version = version!!,
+    chainId = chainId!!,
+    issuedAt = issuedAt,
+    expirationTime = expirationTime,
+    notBefore = notBefore,
+    requestId = requestId,
+    resources = resources
+)
+
+println(msg.toString())
 ```
