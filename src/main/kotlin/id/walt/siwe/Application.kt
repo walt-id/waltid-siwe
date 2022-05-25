@@ -11,11 +11,16 @@ import io.ktor.server.sessions.*
 import io.ktor.util.*
 import java.util.*
 
+
 fun main(args: Array<String>): Unit =
     io.ktor.server.cio.EngineMain.main(args)
 
+lateinit var secretSessionSignKey: ByteArray
+
 @Suppress("unused") // application.conf references the main function.
 fun Application.module() {
+    secretSessionSignKey = hex(environment.config.property("ktor.sessionkey").getString())
+
     configuration()
     routes()
 }
