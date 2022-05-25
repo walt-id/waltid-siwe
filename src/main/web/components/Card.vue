@@ -11,7 +11,7 @@
           <b-icon
             :icon="icon"
             size="is-large"
-            type="is-primary"
+            :type="{ 'is-success': iconColor === 2, 'is-info': iconColor === 1, 'is-danger': iconColor === -1, 'is-primary': iconColor === 0 }"
           />
         </div>
       </div>
@@ -36,6 +36,10 @@ export default {
     },
     icon: {
       type: String,
+      required: true
+    },
+    iconColor: {
+      type: Number,
       required: true
     }
   }
