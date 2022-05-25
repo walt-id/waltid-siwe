@@ -37,6 +37,7 @@ dependencies {
     implementation("io.ktor:ktor-server-cors-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-double-receive-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-cio-jvm:$ktor_version")
+    implementation("io.ktor:ktor-server-auto-head-response:$ktor_version")
 
     // Logging
     implementation("ch.qos.logback:logback-classic:$logback_version")
