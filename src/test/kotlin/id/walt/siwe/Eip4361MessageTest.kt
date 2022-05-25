@@ -1,5 +1,6 @@
 package id.walt.siwe
 
+import id.walt.siwe.eip4361.Eip4361Message
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldContain
 import io.kotest.matchers.collections.shouldHaveSize
