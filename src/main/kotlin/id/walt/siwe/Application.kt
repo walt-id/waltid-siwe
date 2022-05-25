@@ -1,7 +1,7 @@
-package id.walt
+package id.walt.siwe
 
 import io.ktor.server.application.*
-import id.walt.configuration.*
+import id.walt.siwe.configuration.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*

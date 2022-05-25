@@ -1,4 +1,4 @@
-package id.walt
+package id.walt.siwe
 
 /*
 ${domain} wants you to sign in with your Ethereum account:

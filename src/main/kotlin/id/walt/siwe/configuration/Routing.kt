@@ -1,4 +1,4 @@
-package id.walt.configuration
+package id.walt.siwe.configuration
 
 import io.ktor.server.routing.*
 import io.ktor.server.plugins.doublereceive.*

@@ -1,11 +1,12 @@
-package id.walt
+package id.walt.siwe
 
-import io.ktor.http.*
+import id.walt.siwe.configuration.configureRouting
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
-import kotlin.test.*
+import io.ktor.http.*
 import io.ktor.server.testing.*
-import id.walt.configuration.*
+import kotlin.test.Test
+import kotlin.test.assertEquals
 
 class ApplicationTest {
     @Test

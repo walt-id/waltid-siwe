@@ -1,4 +1,4 @@
-package id.walt.configuration
+package id.walt.siwe.configuration
 
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.plugins.contentnegotiation.*

@@ -1,4 +1,4 @@
-package id.walt
+package id.walt.siwe
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.collections.shouldContain
