@@ -23,6 +23,11 @@ repositories {
 }
 
 dependencies {
+    // Ethereum
+    implementation("org.web3j:core:5.0.0")
+    implementation("org.web3j:crypto:5.0.0")
+
+    // Ktor
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-sessions-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktor_version")
@@ -32,10 +37,13 @@ dependencies {
     implementation("io.ktor:ktor-server-cors-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-double-receive-jvm:$ktor_version")
     implementation("io.ktor:ktor-server-cio-jvm:$ktor_version")
+
+    // Logging
     implementation("ch.qos.logback:logback-classic:$logback_version")
+
+    // Testing
     testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
-
     testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
     testImplementation("io.kotest:kotest-assertions-core:5.3.0 ")
 
