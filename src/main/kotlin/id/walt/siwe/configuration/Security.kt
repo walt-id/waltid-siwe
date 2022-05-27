@@ -5,11 +5,11 @@ import io.ktor.server.application.*
 import io.ktor.server.sessions.*
 
 @kotlinx.serialization.Serializable
-data class WaltSiweSession(val nonce: String, val address: String? = null, val valid: Boolean = false)
+data class SiweSession(val nonce: String, val address: String? = null, val valid: Boolean = false)
 
 fun Application.configureSecurity() {
     install(Sessions) {
-        cookie<WaltSiweSession>("walt-siwe-session") {
+        cookie<SiweSession>("waltid-siwe-session") {
             transform(SessionTransportTransformerMessageAuthentication(secretSessionSignKey))
         }
     }

@@ -39,11 +39,11 @@ fun Application.routes() {
         get("/nonce") {
             val newNonce = UUID.randomUUID().toString()
             println("New nonce: $newNonce")
-            call.sessions.set(WaltSiweSession(nonce = newNonce))
+            call.sessions.set(SiweSession(nonce = newNonce))
             call.respondText(newNonce)
         }
         post("/verify") {
-            val request = call.receiveOrNull<WaltSiweRequest>()
+            val request = call.receiveOrNull<SiweRequest>()
 
             if (request == null) {
                 call.forbidden("Invalid or no request was sent."); return@post
@@ -53,7 +53,7 @@ fun Application.routes() {
             println("EIP4361msg: $eip4361msg")
             println("EIP nonce: ${eip4361msg.nonce}")
 
-            val session = call.sessions.get<WaltSiweSession>()
+            val session = call.sessions.get<SiweSession>()
             if (session == null) {
                 call.forbidden("Invalid or no session was set."); return@post
             }
@@ -86,11 +86,11 @@ fun Application.routes() {
 
             nonceBlacklists.add(eip4361msg.nonce)
 
-            call.sessions.set(WaltSiweSession(eip4361msg.nonce, eip4361msg.address, true))
+            call.sessions.set(SiweSession(eip4361msg.nonce, eip4361msg.address, true))
             call.respond(WaltSiweResponse(false, "Successfully signed in as ${eip4361msg.address}!"))
         }
         get("/personal_information") {
-            val session = call.sessions.get<WaltSiweSession>()
+            val session = call.sessions.get<SiweSession>()
             if (session == null) {
                 call.forbidden("No or invalid session set."); return@get
             }
@@ -98,10 +98,10 @@ fun Application.routes() {
                 call.forbidden("Session is not (yet) valid."); return@get
             }
 
-            call.respond(WaltSiweSession(session.nonce, session.address, session.valid))
+            call.respond(SiweSession(session.nonce, session.address, session.valid))
         }
         post("/logout") {
-            call.sessions.clear<WaltSiweSession>()
+            call.sessions.clear<SiweSession>()
             call.respond(WaltSiweResponse(false, "Logout."))
         }
     }

@@ -1,7 +1,7 @@
 package id.walt.siwe
 
 @kotlinx.serialization.Serializable
-data class WaltSiweRequest(
+data class SiweRequest(
     val message: String,
     val signature: String
 )
