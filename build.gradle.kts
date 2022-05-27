@@ -3,13 +3,14 @@ val kotlin_version: String by project
 val logback_version: String by project
 
 plugins {
-    application
     kotlin("jvm") version "1.6.21"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.6.21"
+    application
+    `maven-publish`
 }
 
 group = "id.walt"
-version = "0.0.1"
+version = "0.1.0-SNAPSHOT"
 application {
     mainClass.set("io.ktor.server.cio.EngineMain")
 
@@ -53,4 +54,38 @@ dependencies {
 
 tasks.withType<Test>().configureEach {
     useJUnitPlatform()
+}
+
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            pom {
+                name.set("SIWE by walt.id")
+                description.set("Kotlin/Java library for SIWE - EIP-4361 Sign In With Ethereum.")
+                url.set("https://walt.id")
+            }
+            from(components["java"])
+        }
+    }
+
+    repositories {
+        maven {
+            url = uri("https://maven.walt.id/repository/waltid/")
+            val usernameFile = File("secret_maven_username.txt")
+            val passwordFile = File("secret_maven_password.txt")
+            val secretMavenUsername = System.getenv()["MAVEN_USERNAME"] ?: if (usernameFile.isFile) { usernameFile.readLines()[0] } else { "" }
+            println("Deploy username length: ${secretMavenUsername.length}")
+            val secretMavenPassword = System.getenv()["MAVEN_PASSWORD"] ?: if (passwordFile.isFile) { passwordFile.readLines()[0] } else { "" }
+
+            if (secretMavenPassword.isBlank()) {
+                println("WARNING: Password is blank!")
+            }
+
+            credentials {
+                username = secretMavenUsername
+                password = secretMavenPassword
+            }
+        }
+    }
 }

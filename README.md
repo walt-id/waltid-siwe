@@ -1,6 +1,23 @@
 # SIWE by walt.id
 
 # Usage
+
+### Add dependency
+
+Include the Maven repo: __https://maven.walt.id/repository/waltid/__ in your build config.
+
+_Gradle_
+
+        implementation("id.walt:waltid-siwe:0.1.0")
+
+_Maven_
+
+        <dependency>
+            <groupId>id.walt</groupId>
+            <artifactId>waltid-siwe</artifactId>
+            <version>0.1.0</version>
+        </dependency>
+
 ### Parser and serializer for EIP-4361 messages
 use `id.walt.siwe.Eip4361Message`
 
