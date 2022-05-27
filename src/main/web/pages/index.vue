@@ -2,9 +2,9 @@
   <section class="section">
 
     <section class="hero">
-      <div class="hero-body">
+      <div class="hero-body has-text-centered">
         <p class="title">
-          Welcome to walt.id </p>
+          SIWE Demo </p>
         <p class="subtitle">
           Please login </p>
 
