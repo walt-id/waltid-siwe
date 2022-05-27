@@ -1,9 +1,9 @@
-name: Snapshot release workflow for walt.id NFT Kit
+name: Snapshot release workflow for SIWE by walt.id
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   verify-wrapper:
