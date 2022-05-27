@@ -1,5 +1,6 @@
-# walt-siwe
+# SIWE by walt.id
 
+# Usage
 ### Parser and serializer for EIP-4361 messages
 use `id.walt.siwe.Eip4361Message`
 
@@ -43,3 +44,22 @@ val msg = Eip4361Message(
 
 println(msg.toString())
 ```
+#### Serialize EIP-4361 message
+
+## Build & Run
+
+### Backend
+
+Make sure your have JVM 16 or higher installed.
+
+    gradle clean build
+    tar xf build/distributions/walt-siwe-0.0.1.tar
+    ./walt-siwe-0.0.1/bin/walt-siwe
+
+
+Make sure you have Node v16 or higher installed.
+### Frontend
+
+    cd src/main/web
+    yarn install
+    yarn dev

@@ -51,15 +51,15 @@ fun Application.routes() {
 
             val eip4361msg = Eip4361Message.fromString(request.message)
             println("EIP4361msg: $eip4361msg")
+            println("EIP nonce: ${eip4361msg.nonce}")
 
             val session = call.sessions.get<WaltSiweSession>()
             if (session == null) {
                 call.forbidden("Invalid or no session was set."); return@post
             }
 
+            println("Session nonce: ${session.nonce}")
             if (session.nonce != eip4361msg.nonce) {
-                println("Session nonce: ${session.nonce}")
-                println("EIP nonce: ${eip4361msg.nonce}")
                 call.forbidden("Invalid nonce was set."); return@post
             }
 
@@ -83,7 +83,6 @@ fun Application.routes() {
 
             // TODO: Check expirationTime
             // TODO: Check notBefore
-
 
             nonceBlacklists.add(eip4361msg.nonce)
 
