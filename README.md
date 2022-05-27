@@ -46,7 +46,19 @@ println(msg.toString())
 ```
 #### Serialize EIP-4361 message
 
-## Build & Run
+## Build & Run with Docker
+
+### Backend
+
+    docker build -f Dockerfile.backend -t waltid/siwe-backend .
+    docker run -it -p 7000:7000 waltid/siwe-backend
+
+### Frontend
+
+    docker build -f Dockerfile.frontend -t waltid/siwe-frontend .
+    docker run -it -p 3000:80 waltid/siwe-frontend
+
+## Build & Run natively (for dev)
 
 ### Backend
 
