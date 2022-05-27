@@ -37,10 +37,17 @@ jobs:
           MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
         with:
           arguments: build publish --no-daemon
-      - name: Docker Build and Push SNAPSHOT
+      - name: Docker Build and Push SIWE Backend SNAPSHOT
         uses: philpotisk/github-action-docker-build-push@master
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
           DOCKER_FILE: Dockerfile
           CONTAINER_TAG: waltid/siwe:latest
+      - name: Docker Build and Push SIWE Frontend SNAPSHOT
+        uses: philpotisk/github-action-docker-build-push@master
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+          DOCKER_FILE: Dockerfile.frontend
+          CONTAINER_TAG: waltid/siwe-frontend:latest
