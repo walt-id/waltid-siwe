@@ -67,8 +67,8 @@ println(msg.toString())
 
 ### Backend
 
-    docker build -f Dockerfile.backend -t waltid/siwe-backend .
-    docker run -it -p 7000:7000 waltid/siwe-backend
+    docker build -t waltid/siwe .
+    docker run -it -p 7000:7000 waltid/siwe
 
 ### Frontend
 
