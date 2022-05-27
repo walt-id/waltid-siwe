@@ -53,8 +53,8 @@ println(msg.toString())
 Make sure your have JVM 16 or higher installed.
 
     gradle clean build
-    tar xf build/distributions/walt-siwe-0.0.1.tar
-    ./walt-siwe-0.0.1/bin/walt-siwe
+    tar xf build/distributions/waltid-siwe-0.0.1.tar
+    ./waltid-siwe-0.0.1/bin/waltid-siwe
 
 
 Make sure you have Node v16 or higher installed.
