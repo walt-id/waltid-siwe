@@ -72,8 +72,8 @@ println(msg.toString())
 
 ### Frontend
 
-    docker build -f Dockerfile.frontend -t waltid/siwe-frontend .
-    docker run -it -p 3000:80 waltid/siwe-frontend
+    docker build -f Dockerfile.web -t waltid/siwe-web .
+    docker run -it -p 3000:80 waltid/siwe-web
 
 ## Build & Run natively (for dev)
 

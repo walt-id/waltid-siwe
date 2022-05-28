@@ -1,4 +1,4 @@
-# waltid-siwe-frontend
+# waltid-siwe-web
 
 ## Build Setup
 
