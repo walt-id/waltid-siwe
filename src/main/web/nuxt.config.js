@@ -5,7 +5,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'waltid-siwe-web',
+    title: 'SIWE by walt.id',
     htmlAttrs: {
       lang: 'en'
     },

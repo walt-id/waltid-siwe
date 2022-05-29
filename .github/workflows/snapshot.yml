@@ -49,5 +49,5 @@ jobs:
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-          DOCKER_FILE: Dockerfile.web
-          CONTAINER_TAG: waltid/siwe-web:latest
+          DOCKER_FILE: Dockerfile-web-test
+          CONTAINER_TAG: waltid/siwe-web-test:latest

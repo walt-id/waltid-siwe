@@ -4,15 +4,15 @@ Kotlin implementation of __EIP-4361 Sign-In with Ethereum__.
 
 # Demo
 
-A SIWE demo is deployed here: https://siwe.walt-test.cloud/
+A SIWE demo is deployed here: https://siwe.walt.id
 
 For running SIWE yourself use _Docker_:
 
-__Frontend__ (works without backend since test-system is configured):
+__Frontend__ will start at http://localhost:3000/ (works without backend since test-system is configured):
 
-    docker run -it -p 3000:80 waltid/siwe-web
+    docker run -it -p 3000:80 waltid/siwe-web-test
 
-__Backend__:
+__Backend__ will start at http://0.0.0.0:7000/ and expose the endpoints at [/api/nonce](http://0.0.0.0:7000/api/nonce), [/api/verify](http://0.0.0.0:7000/api/verify), [/api/personal_information](http://0.0.0.0:7000/api/personal_information) and [/api/logout](http://0.0.0.0:7000/api/logout):
 
     docker run -it -p 7000:7000 waltid/siwe
 
@@ -88,8 +88,8 @@ println(msg.toString())
 
 ### Frontend
 
-    docker build -f Dockerfile.web -t waltid/siwe-web .
-    docker run -it -p 3000:80 waltid/siwe-web
+    docker build -f Dockerfile-web-test -t waltid/siwe-web-test .
+    docker run -it -p 3000:80 waltid/siwe-web-test
 
 ## Build & Run natively (for dev)
 
@@ -120,3 +120,7 @@ Switch backend address by setting the .env file:
 Replace hostname "walt-test.cloud" in file k8s/deployment-siwe-dev.yaml with yours and run:
 
     kubectl -n dev apply -f deployment-siwe-dev.yaml
+
+## Test System
+
+The current snapshot for testing is deployed here: https://siwe.walt-test.cloud/

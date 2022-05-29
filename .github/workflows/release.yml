@@ -70,7 +70,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-          DOCKER_FILE: Dockerfile.web
+          DOCKER_FILE: Dockerfile-web-test
           CONTAINER_TAG: waltid/siwe-web:latest
 
       - name: Release

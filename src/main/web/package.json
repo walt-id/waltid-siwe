@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "generate-prod": "BACKEND_ADDRESS=/api nuxt generate",
     "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
     "lint": "yarn lint:js",
     "lintfix": "yarn lint:js --fix"

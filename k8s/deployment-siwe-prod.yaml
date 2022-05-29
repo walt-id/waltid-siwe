@@ -38,22 +38,22 @@ spec:
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-  name: siwe-web-test
+  name: siwe-web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: siwe-web-test
+      app: siwe-web
   template:
     metadata:
       labels:
-        app: siwe-web-test
+        app: siwe-web
       annotations:
         deployment/id: "_DEFAULT_DEPLOYMENT_"
     spec:
       containers:
-        - name: siwe-web-test
-          image: waltid/siwe-web-test:latest
+        - name: siwe-web
+          image: waltid/siwe-web:latest
           ports:
             - containerPort: 80
               name: http-api
@@ -61,7 +61,7 @@ spec:
 kind: Service
 apiVersion: v1
 metadata:
-  name: siwe-web-test
+  name: siwe-web
 spec:
   ports:
     - name: http
@@ -69,7 +69,7 @@ spec:
       targetPort: http-api
       protocol: TCP
   selector:
-    app: siwe-web-test
+    app: siwe-web
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -81,17 +81,17 @@ metadata:
 spec:
   tls:
     - hosts:
-        - siwe.walt-test.cloud
-      secretName: siwe-web-test-tls-secret
+        - siwe.walt.id
+      secretName: siwe-web-tls-secret
   rules:
-    - host: siwe.walt-test.cloud
+    - host: siwe.walt.id
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: siwe-web-test
+                name: siwe-web
                 port:
                   number: 80
           - path: /api
