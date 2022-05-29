@@ -55,5 +55,10 @@ export default {
     extend(config) {
       config.resolve.alias['vue'] = 'vue/dist/vue.common'
     }
+  },
+
+  publicRuntimeConfig: {
+    // remoteAddress: process.env.REMOTE_ADDRESS || 'http://localhost:7000' // For dev
+    remoteAddress: process.env.REMOTE_ADDRESS || 'https://siwe.walt-test.cloud' // For test
   }
 }
