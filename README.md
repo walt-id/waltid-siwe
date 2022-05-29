@@ -1,5 +1,21 @@
 # SIWE by walt.id
 
+Kotlin implementation of __EIP-4361 Sign-In with Ethereum__.
+
+# Demo
+
+A SIWE demo is deployed here: https://siwe.walt-test.cloud/
+
+For running SIWE yourself use _Docker_:
+
+__Frontend__ (works without backend since test-system is configured):
+
+    docker run -it -p 3000:80 waltid/siwe-web
+
+__Backend__:
+
+    docker run -it -p 7000:7000 waltid/siwe
+
 # Usage
 
 ### Add dependency
@@ -85,9 +101,9 @@ Make sure your have JVM 16 or higher installed.
     tar xf build/distributions/waltid-siwe-0.0.1.tar
     ./waltid-siwe-0.0.1/bin/waltid-siwe
 
+### Frontend
 
 Make sure you have Node v16 or higher installed.
-### Frontend
 
     cd src/main/web
     yarn install

@@ -65,6 +65,13 @@ jobs:
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
           DOCKER_FILE: Dockerfile
           CONTAINER_TAG: waltid/siwe:${{ github.event.inputs.versionName }}
+      - name: Docker Build and Push SIWE Frontend SNAPSHOT
+        uses: philpotisk/github-action-docker-build-push@master
+        env:
+          DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
+          DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+          DOCKER_FILE: Dockerfile.web
+          CONTAINER_TAG: waltid/siwe-web:latest
 
       - name: Release
         uses: softprops/action-gh-release@v1
