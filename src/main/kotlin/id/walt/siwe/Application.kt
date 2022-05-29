@@ -35,14 +35,17 @@ suspend fun ApplicationCall.forbidden(msg: String) {
 }
 
 fun Application.routes() {
+
+    val baseApiPath = "/api"
+
     routing {
-        get("/nonce") {
+        get("$baseApiPath/nonce") {
             val newNonce = UUID.randomUUID().toString()
             println("New nonce: $newNonce")
             call.sessions.set(SiweSession(nonce = newNonce))
             call.respondText(newNonce)
         }
-        post("/verify") {
+        post("$baseApiPath/verify") {
             val request = call.receiveOrNull<SiweRequest>()
 
             if (request == null) {
@@ -89,7 +92,7 @@ fun Application.routes() {
             call.sessions.set(SiweSession(eip4361msg.nonce, eip4361msg.address, true))
             call.respond(WaltSiweResponse(false, "Successfully signed in as ${eip4361msg.address}!"))
         }
-        get("/personal_information") {
+        get("$baseApiPath/personal_information") {
             val session = call.sessions.get<SiweSession>()
             if (session == null) {
                 call.forbidden("No or invalid session set."); return@get
@@ -100,7 +103,7 @@ fun Application.routes() {
 
             call.respond(SiweSession(session.nonce, session.address, session.valid))
         }
-        post("/logout") {
+        post("$baseApiPath/logout") {
             call.sessions.clear<SiweSession>()
             call.respond(WaltSiweResponse(false, "Logout."))
         }
