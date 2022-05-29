@@ -44,7 +44,6 @@ import Card from '~/components/Card'
 import {ethers} from 'ethers';
 import {Eip4361Message} from 'assets/Eip4361Message'
 
-const remoteAddress = "http://localhost:7000";
 const domain = window.location.host;
 const origin = window.location.origin;
 const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -205,7 +204,7 @@ export default {
       const signerAddress = await signer.getAddress();
       const description = 'Sign in with Ethereum to the app.';
 
-      const nonce = await this.$axios.$get(`${remoteAddress}/nonce`, {withCredentials: true})
+      const nonce = await this.$axios.$get(this.$config.backendAddress + '/nonce', {withCredentials: true})
       console.log("Nonce: " + nonce)
       const eip4361msg = new Eip4361Message(domain, signerAddress, description, origin, '1', '1', nonce)
         .serialize()
@@ -218,18 +217,18 @@ export default {
       }
       console.log("Signature: " + signature)
 
-      return this.$axios.post(`${remoteAddress}/verify`, {
+      return this.$axios.post(this.$config.backendAddress + '/verify', {
         message: eip4361msg,
         signature: signature
       }, {withCredentials: true})
     },
     getInformation() {
-      return this.$axios.get(`${remoteAddress}/personal_information`, {withCredentials: true});
+      return this.$axios.get(this.$config.backendAddress + '/personal_information', {withCredentials: true});
     },
     async logout() {
       console.log("Singing out...")
       sessionStorage.clear();
-      await this.$axios.post(`${remoteAddress}/logout`, {}, {withCredentials: true});
+      await this.$axios.post(this.$config.backendAddress  + '/logout', {}, {withCredentials: true});
       this.buttonText = 'Signed out.'
       this.buttonType = 'is-info'
       this.step1 = 0

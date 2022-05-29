@@ -72,8 +72,8 @@ println(msg.toString())
 
 ### Frontend
 
-    docker build -f Dockerfile.frontend -t waltid/siwe-frontend .
-    docker run -it -p 3000:80 waltid/siwe-frontend
+    docker build -f Dockerfile.web -t waltid/siwe-web .
+    docker run -it -p 3000:80 waltid/siwe-web
 
 ## Build & Run natively (for dev)
 
@@ -92,3 +92,15 @@ Make sure you have Node v16 or higher installed.
     cd src/main/web
     yarn install
     yarn dev
+
+#### Config
+
+Switch backend address by setting the .env file:
+   
+    yarn dev --dotenv .env-dev
+
+## Deploy to Kubernetes
+
+Replace hostname "walt-test.cloud" in file k8s/deployment-siwe-dev.yaml with yours and run:
+
+    kubectl -n dev apply -f deployment-siwe-dev.yaml

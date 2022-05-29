@@ -5,7 +5,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'waltid-siwe-frontend',
+    title: 'waltid-siwe-web',
     htmlAttrs: {
       lang: 'en'
     },
@@ -55,5 +55,10 @@ export default {
     extend(config) {
       config.resolve.alias['vue'] = 'vue/dist/vue.common'
     }
+  },
+
+  publicRuntimeConfig: {
+    // backendAddress: process.env.BACKEND_ADDRESS || 'http://localhost:7000/api' // For dev
+    backendAddress: process.env.BACKEND_ADDRESS || 'https://siwe.walt-test.cloud/api' // For test
   }
 }

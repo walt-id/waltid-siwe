@@ -8,14 +8,20 @@ import io.ktor.server.plugins.cors.routing.*
 fun Application.configureHTTP() {
     install(AutoHeadResponse)
     install(CORS) {
-        allowHost("localhost:3000")
         allowCredentials = true
+        maxAgeInSeconds = 1
         allowMethod(HttpMethod.Options)
         allowMethod(HttpMethod.Put)
         allowMethod(HttpMethod.Patch)
         allowMethod(HttpMethod.Delete)
         allowHeader(HttpHeaders.ContentType)
-        //anyHost() // @TODO: Don't do this in production if possible. Try to limit it.
-    }
+        allowHeader(HttpHeaders.AccessControlAllowOrigin)
+        allowHeader(HttpHeaders.AccessControlAllowHeaders)
+        allowHeader(HttpHeaders.Cookie)
 
+        allowHost("localhost:3000", schemes = listOf("http", "https")) // For dev
+        allowHost("siwe-web.walt-test.cloud", schemes = listOf("https")) // For test
+        allowHost("siwe.walt.id", schemes = listOf("https")) // For demo
+        //anyHost() // Don't do this in production if possible. Try to limit it.
+    }
 }
