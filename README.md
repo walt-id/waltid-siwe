@@ -92,3 +92,9 @@ Make sure you have Node v16 or higher installed.
     cd src/main/web
     yarn install
     yarn dev
+
+#### Config
+
+   Switch backend address by setting the .env file:
+   
+    yarn dev --dotenv .env-dev

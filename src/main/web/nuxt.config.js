@@ -58,7 +58,7 @@ export default {
   },
 
   publicRuntimeConfig: {
-    // remoteAddress: process.env.REMOTE_ADDRESS || 'http://localhost:7000' // For dev
-    remoteAddress: process.env.REMOTE_ADDRESS || 'https://siwe.walt-test.cloud' // For test
+    // backendAddress: process.env.BACKEND_ADDRESS || 'http://localhost:7000' // For dev
+    backendAddress: process.env.BACKEND_ADDRESS || 'https://siwe.walt-test.cloud' // For test
   }
 }
