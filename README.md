@@ -95,6 +95,12 @@ Make sure you have Node v16 or higher installed.
 
 #### Config
 
-   Switch backend address by setting the .env file:
+Switch backend address by setting the .env file:
    
     yarn dev --dotenv .env-dev
+
+## Deploy to Kubernetes
+
+Replace hostname "walt-test.cloud" in file k8s/deployment-siwe-dev.yaml with yours and run:
+
+    kubectl -n dev apply -f deployment-siwe-dev.yaml
