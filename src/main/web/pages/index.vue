@@ -44,7 +44,8 @@ import Card from '~/components/Card'
 import {ethers} from 'ethers';
 import {Eip4361Message} from 'assets/Eip4361Message'
 
-const remoteAddress = "http://localhost:7000";
+// const remoteAddress = "http://localhost:7000"; // For dev
+const remoteAddress = "https://siwe.walt-test.cloud"; // For test
 const domain = window.location.host;
 const origin = window.location.origin;
 const provider = new ethers.providers.Web3Provider(window.ethereum);
