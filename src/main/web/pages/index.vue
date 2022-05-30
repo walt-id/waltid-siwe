@@ -44,10 +44,23 @@ import Card from '~/components/Card'
 import {ethers} from 'ethers';
 import {Eip4361Message} from 'assets/Eip4361Message'
 
+
 const domain = window.location.host;
 const origin = window.location.origin;
-const provider = new ethers.providers.Web3Provider(window.ethereum);
-const signer = provider.getSigner();
+let provider = null;
+let signer = null;
+
+try {
+  provider = new ethers.providers.Web3Provider(window.ethereum);
+  signer = provider.getSigner();
+} catch (e) {
+  console.log(e)
+}
+
+if (!provider || !signer) {
+  alert("Please install a web3 wallet e.g. MetaMask");
+  throw new Error("Stopping execution as no web3 wallet was found.");
+}
 
 export default {
   name: 'IndexPage',
