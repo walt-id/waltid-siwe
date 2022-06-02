@@ -77,7 +77,6 @@ val msg = Eip4361Message(
 
 println(msg.toString())
 ```
-#### Serialize EIP-4361 message
 
 ## Build & Run with Docker
 
