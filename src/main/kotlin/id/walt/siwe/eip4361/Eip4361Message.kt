@@ -25,7 +25,7 @@ data class Eip4361Message(
     val address: String, // "0x29c480ee4b8DE1ec0578B4A117B32d52DC1A22ED"
     val description: String, // "Sign in with Ethereum to the app."
     val uri: String, // "http://localhost:8080"
-    val nonce: String, // "ievBV6BahTf1dHOgA"
+    val nonce: String? = null, // "ievBV6BahTf1dHOgA"
     val version: Int = 1,
     val chainId: Int = 1,
     val issuedAt: String? = null, // "2022-05-25T10:20:16.449Z"
