@@ -56,7 +56,6 @@ object Eip4361MessageParser {
         // Check for required attributes
         when {
             uri == null -> throwMissing("URI")
-            nonce == null -> throwMissing("Nonce")
             version == null -> throwMissing("Version")
             chainId == null -> throwMissing("Chain ID")
         }
