@@ -67,7 +67,7 @@ object Eip4361MessageParser {
             address = address,
             description = description,
             uri = uri!!,
-            nonce = nonce!!,
+            nonce = nonce,
             version = version!!,
             chainId = chainId!!,
             issuedAt = issuedAt,
