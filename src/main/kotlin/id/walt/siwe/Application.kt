@@ -10,6 +10,8 @@ import io.ktor.server.routing.*
 import io.ktor.server.sessions.*
 import io.ktor.util.*
 import java.util.*
+import id.walt.nftkit.services.*
+import id.walt.nftkit.utilis.Common
 
 
 fun main(args: Array<String>): Unit =
@@ -90,6 +92,15 @@ fun Application.routes() {
 
                 call.sessions.set(SiweSession(eip4361msg.nonce, eip4361msg.address, true))
                 call.respond(WaltSiweResponse(false, "Successfully signed in as ${eip4361msg.address}!"))
+            }
+            get("/nft/verify") {
+                val session = call.sessions.get<SiweSession>()
+                    val chain = call.request.queryParameters.get("chain")
+                    val contractAddress = call.request.queryParameters.get("contractAddress")
+                    val account = session?.address
+                    val result = VerificationService.verifyNftOwnershipWithinCollection(Common.getChain(chain!!.uppercase()),
+                        contractAddress!!, account!!)
+                call.respond(result)
             }
             get("/personal_information") {
                 val session = call.sessions.get<SiweSession>()

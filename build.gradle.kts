@@ -21,12 +21,16 @@ application {
 repositories {
     mavenCentral()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/ktor/eap") }
+    maven("https://maven.walt.id/repository/waltid/")
 }
 
 dependencies {
     // Ethereum
     implementation("org.web3j:core:5.0.0")
     implementation("org.web3j:crypto:5.0.0")
+
+    // NftKit
+    implementation("id.walt:waltid-nftkit:1.0.0")
 
     // Ktor
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
@@ -48,6 +52,14 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
     testImplementation("io.kotest:kotest-assertions-core:5.3.0 ")
+
+    // NftKit
+    implementation("id.walt:waltid-nftkit:1.0.0")
+
+    //fireblocks
+    implementation("org.json:json:20220320")
+    implementation("com.auth0:java-jwt:4.2.1")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
 
 }
