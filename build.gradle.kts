@@ -3,8 +3,8 @@ val kotlin_version: String by project
 val logback_version: String by project
 
 plugins {
-    kotlin("jvm") version "1.6.21"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.6.21"
+    kotlin("jvm") version "1.8.10"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
     application
     `maven-publish`
 }
@@ -25,8 +25,8 @@ repositories {
 
 dependencies {
     // Ethereum
-    implementation("org.web3j:core:5.0.0")
-    implementation("org.web3j:crypto:5.0.0")
+    implementation("org.web3j:core:4.10.2") // 5.0.0 is not a current version, it was wrongly released
+    implementation("org.web3j:crypto:4.10.2") // https://github.com/web3j/web3j/issues/1849
 
     // Ktor
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
@@ -44,10 +44,9 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
     // Testing
-    testImplementation("io.ktor:ktor-server-tests-jvm:$ktor_version")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
-    testImplementation("io.kotest:kotest-runner-junit5:5.3.0")
-    testImplementation("io.kotest:kotest-assertions-core:5.3.0 ")
+    testImplementation("io.kotest:kotest-runner-junit5:5.5.5")
+    testImplementation("io.kotest:kotest-assertions-core:5.5.5 ")
 
 
 }
