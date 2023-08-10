@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "id.walt"
-version = "0.1.1-SNAPSHOT"
+version = "0.1.1"
 application {
     mainClass.set("io.ktor.server.cio.EngineMain")
 
