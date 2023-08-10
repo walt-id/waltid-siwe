@@ -3,8 +3,8 @@ val kotlin_version: String by project
 val logback_version: String by project
 
 plugins {
-    kotlin("jvm") version "1.8.10"
-    id("org.jetbrains.kotlin.plugin.serialization") version "1.8.10"
+    kotlin("jvm") version "1.9.0"
+    id("org.jetbrains.kotlin.plugin.serialization") version "1.9.0"
     application
     `maven-publish`
 }
